@@ -1,13 +1,13 @@
 source('load_data.R')
 
-data <- loadData()
+mydata <- loadData()
 
 png(filename='plot3.png', width=480, height=480, units='px')
 
 startDay = as.POSIXct(strftime("2007-02-01 00:00:00"))
 endDay = as.POSIXct(strftime("2007-02-03 00:00:00"))
-plot(data$Time,
-     data$Sub_metering_1,
+plot(mydata$Time,
+     mydata$Sub_metering_1,
      xlim=c(startDay, endDay),
      xaxt="n",
      type="l",
@@ -15,8 +15,8 @@ plot(data$Time,
      ylab="Energy sub metering"
 )
 
-lines(data$Time, data$Sub_metering_2, col="red")
-lines(data$Time, data$Sub_metering_3, col="blue")
+lines(mydata$Time, mydata$Sub_metering_2, col="red")
+lines(mydata$Time, mydata$Sub_metering_3, col="blue")
 
 axis.POSIXct(1, at=seq(startDay, endDay, by="day"), format="%a")
 
