@@ -1,6 +1,6 @@
 source('load_data.R')
 
-data <- loadData()
+mydata <- loadData()
 
 png(filename='plot4.png', width=480, height=480, units='px')
 
@@ -9,8 +9,8 @@ par(mfrow=c(2,2))
 startDay = as.POSIXct(strftime("2007-02-01 00:00:00"))
 endDay = as.POSIXct(strftime("2007-02-03 00:00:00"))
 
-plot(data$Time,
-     data$Global_active_power,
+plot(mydata$Time,
+     mydata$Global_active_power,
      xlim=c(startDay, endDay),
      xaxt="n",
      type="l",
@@ -19,8 +19,8 @@ plot(data$Time,
 )
 axis.POSIXct(1, at=seq(startDay, endDay, by="day"), format="%a")
 
-plot(data$Time,
-     data$Voltage,
+plot(mydata$Time,
+     mydata$Voltage,
      xlim=c(startDay, endDay),
      xaxt="n",
      type="l",
@@ -29,8 +29,8 @@ plot(data$Time,
 )
 axis.POSIXct(1, at=seq(startDay, endDay, by="day"), format="%a")
 
-plot(data$Time,
-     data$Sub_metering_1,
+plot(mydata$Time,
+     mydata$Sub_metering_1,
      xlim=c(startDay, endDay),
      xaxt="n",
      type="l",
@@ -38,8 +38,8 @@ plot(data$Time,
      ylab="Energy sub metering"
 )
 
-lines(data$Time, data$Sub_metering_2, col="red")
-lines(data$Time, data$Sub_metering_3, col="blue")
+lines(mydata$Time, mydata$Sub_metering_2, col="red")
+lines(mydata$Time, mydata$Sub_metering_3, col="blue")
 
 axis.POSIXct(1, at=seq(startDay, endDay, by="day"), format="%a")
 
@@ -47,8 +47,8 @@ legend("topright",
        legend=c('Sub_metering_1', 'Sub_metering_2', 'Sub_metering_3'),
        col=c('black', 'red', 'blue'), lty=c(1, 1, 1))
 
-plot(data$Time,
-     data$Global_reactive_power,
+plot(mydata$Time,
+     mydata$Global_reactive_power,
      xlim=c(startDay, endDay),
      xaxt="n",
      type="l",
